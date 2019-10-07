@@ -48,6 +48,6 @@ app.use(blogRoutes);
 app.use(commentRoutes);
 app.use(userRoutes);
 
-app.listen(process.env.Port || 3000,function(){
+app.listen(process.env.PORT || 3000,function(){
     console.log("listening...");
 })
