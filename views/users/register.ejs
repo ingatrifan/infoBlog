@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+<div class="container">
+    <h1 class="center">Register</h1>
+    <div class="forms" >
+        <form action="/register" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input class="form-control" type="text" name="name" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="lname" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="yourname@whatever.com" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="Username" minlength="8" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="password" minlength="8" required>
+            </div>
+            <div class="form-group">
+                <label for = "imageup">Avatar image: </label>
+                <input type="file" id="imageup" name="avatar" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="description">Say somthing about you...</textarea>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="facebook" placeholder="Facebool url">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="instagram" placeholder="Instagram url">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="tumblr" placeholder="Tumblr url">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Sign up</button>
+            </div>  
+         </form>
+    </div>
+</div>
+
+<% include ../partials/footer %>
