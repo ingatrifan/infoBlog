@@ -14,9 +14,9 @@ var express       = require("express"),
 var blogRoutes = require('./routes/blogs'),
     commentRoutes = require('./routes/comments'),
     userRoutes    = require('./routes/users');
-
-mongoose.connect('mongodb+srv://Blog:assist@infoblog-yusiw.mongodb.net/admin?retryWrites=true&w=majority')
-// mongoose.connect('mongodb://localhost:27017/infoblog' , { useNewUrlParser: true } );
+//Nu functioneaza conectarea la baza de date online
+//mongoose.connect('mongodb+srv://Blog:assist@infoblog-yusiw.mongodb.net/admin?retryWrites=true&w=majority')
+ mongoose.connect('mongodb://localhost:27017/infoblog' , { useNewUrlParser: true } );
 
 app.set("view engine","ejs");
 app.use(express.static("public"));
