@@ -1,23 +1,38 @@
-var express       = require("express"),
-    bodyParser    = require("body-parser"),
-    mongoose      = require('mongoose'),
-    passport      = require('passport'),
-    passportLocal = require('passport-local'),
-    Blog          = require('./models/blog'),
-    Comment       = require('./models/comment'),
-    User          = require('./models/user'),
-    flash         = require('connect-flash'),
-    methodOverride= require('method-override'),
-    exprSanitizer = require('express-sanitizer'),
-    app           = express();
-    
-var blogRoutes = require('./routes/blogs'),
-    commentRoutes = require('./routes/comments'),
-    userRoutes    = require('./routes/users');
-//Nu functioneaza conectarea la baza de date online
-//mongoose.connect('mongodb+srv://Blog:assist@infoblog-yusiw.mongodb.net/admin?retryWrites=true&w=majority')
- mongoose.connect('mongodb://localhost:27017/infoblog' , { useNewUrlParser: true } );
+const express       = require("express");
+const bodyParser    = require("body-parser");
+const mongoose      = require('mongoose');
+const passportLocal = require('passport-local');
+const flash         = require('connect-flash');
+const methodOverride= require('method-override');
+const exprSanitizer = require('express-sanitizer');
+const app           = express();
+const passport      = require('passport');
+const dotenv        = require('dotenv')
+ 
+const db = require('./models');
 
+const cloudinary = require('cloudinary');
+dotenv.config();
+cloudinary.config({ 
+  cloud_name: 'infoblog', 
+  api_key: process.env.CLOUDINARY_KEY, 
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
+const router = require('./routes');
+
+
+mongoose
+  .connect(process.env.DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => console.log("connected successfully to db"));
+
+app.use((req, res, next) => {
+  req.db = db
+  next()
+})
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -27,15 +42,16 @@ app.use(exprSanitizer());
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
-    secret:"I prefer dogs over cats",
+    secret:process.env.SESSION_SECRET,
     resave:false,
     saveUninitialized:false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new passportLocal(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use(new passportLocal(db.User.authenticate()));
+passport.serializeUser(db.User.serializeUser());
+passport.deserializeUser(db.User.deserializeUser());
+
 app.use(function(req,res,next){
     res.locals.currentUser = req.user;
     res.locals.error = req.flash("error");
@@ -43,11 +59,8 @@ app.use(function(req,res,next){
     res.locals.moment = require('moment');
     next();
 })
-//APP ROUTES
-app.use(blogRoutes);
-app.use(commentRoutes);
-app.use(userRoutes);
+app.use('/',router);
 
-app.listen(process.env.PORT || 3000,function(){
+app.listen(process.env.PORT || 8000,function(){
     console.log("listening...");
 })
