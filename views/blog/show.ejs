@@ -1,0 +1,61 @@
+<% include ../partials/header %>
+<div class="container special">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="centered">
+        <h1><a><%= blog.title %></a></h1>
+        <p><em>Submitted by <a href="/users/<%=blog.author.id%>"><%=blog.author.username%></a></em></p>
+        <p><em>   
+          <span><%=moment(blog.created).format("MMM Do YYYY") %></span>
+        </em></p>
+        <img class="img-fluid img-responsive" src ="<%=blog.image%>">
+        <span class="float-right">
+            <%if (currentUser && blog.author.id.equals(currentUser._id)){%>
+              <a href="/blogs/<%=blog._id%>/edit"><i class="fas fa-edit sizeblog"></i></a>
+              <form class="delete-form" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
+                <button class="trash"><i class="fas fa-trash sizeblog"></i></button>
+              </form>
+            <%}%>
+        </span>
+        <p><%- blog.body %></p>
+      </div>
+      <div class="card card-body " id="comments">
+          <div class="text-right">
+              <h5 class="float-left">Comments(<%=blog.comments.length%>)</h5>
+            <a id="add" class="btn btn-success text-right" >Add New Comment</a>
+          </div>
+          <form style="display: none" id="addComment"action="/blogs/<%=blog._id%>/comments" method="post">
+              <div class="form-group">
+                  <textarea  class="form-control" type="text" name="text"></textarea>
+              </div>
+              <div class="form-group">
+                  <input type="submit" class="form-control btn btn-success" value="Post it!">
+              </div>
+          </form>
+          <hr>
+          <% blog.comments.forEach(function(comment){ %>
+            <div class="row">
+              <div class="col-4 col-sm-4 col-md-2 pr-2" >
+                <img class="img-thumbnail avatar"src="<%=comment.author.avatar%>">
+              </div>
+              <div class=" col-8 col-sm-8 col-md 10  pl-0">
+                <h5><%=comment.author.username%></h5>
+                <span><em><%=moment(comment.created).fromNow()%></em></span>
+                <div class="float-right">
+                    <%if (currentUser && comment.author.id.equals(currentUser._id)){ %>
+                      <a href="/blogs/<%=blog._id%>/comments/<%=comment._id%>/edit"><i class="fas fa-edit"></i></a>
+                      <form class="delete-form" action="/blogs/<%=blog._id%>/comments/<%=comment._id%>?_method=DELETE" method="post">
+                        <button class="trash"><i class="fas fa-trash"></i></button>
+                      </form>
+                    <%}%>
+                    </div>
+                <p><%=comment.text%> </p>  
+              </div>
+            </div>
+          <%})%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/footer %>

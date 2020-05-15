@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+
+
+<div class="container">
+        <h1 class="center">New Blog</h1>
+        <form class="special" action="/blogs" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="text" class="form-control" name="title" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+                <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <textarea rows="10" class="form-control" name ="body" required></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary btn-lg btn-block" id="sendtags">
+        </form>
+    </div>
+<% include ../partials/footer %>

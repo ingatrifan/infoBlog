@@ -1,0 +1,35 @@
+{
+  "name": "infoblog",
+  "version": "1.0.0",
+  "description": "An IT blog",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Inga",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "async": "^3.1.0",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.15.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-sanitizer": "^1.0.5",
+    "express-session": "^1.16.2",
+    "http-status-code": "^2.1.0",
+    "http-status-codes": "^1.4.0",
+    "method-override": "^3.0.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.7.1",
+    "multer": "^1.4.2",
+    "node-inspect": "^1.11.6",
+    "nodemailer": "^6.3.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1"
+  }
+}

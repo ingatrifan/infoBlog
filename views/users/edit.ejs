@@ -1,0 +1,39 @@
+<% include ../partials/header %>
+<div class="container">
+    <h1 class="center">Edit profile</h1>
+    <div class="forms" >
+        <form action="/users/<%=user._id%>?_method=PUT" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input class="form-control" type="text" name="fname" value="<%=user.name%>">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="lname" value="<%=user.lname%>">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" value="<%=user.email%>">
+            </div>
+            <div class="form-group">
+                <input type="file" id="image" name="avatar" accept="image/*">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="description">
+                    <%=user.description%>
+                </textarea>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="facebook" value="<%=user.facebook%>">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="instagram" value="<%=user.instagram%>">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="tumblr" value="<%=user.tumblr%>">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Edit</button>
+            </div>  
+         </form>
+    </div>
+</div>
+
+<% include ../partials/footer %>

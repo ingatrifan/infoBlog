@@ -1,0 +1,123 @@
+body{
+    font-family: 'Be Vietnam', sans-serif;
+    background-color:white;
+}
+
+div.modal+div.container{
+    margin-top: 20px;
+}
+.forms{
+    width: 35%;
+    margin:20px auto;
+}
+.center{
+    font-family: 'Be Vietnam', sans-serif;
+    text-align: center;
+}
+
+label{
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.delete-form{
+    display: inline;
+}
+
+.sizeblog{
+    font-size: 1.4em;
+    background-color: none!important;
+
+}
+.trash{
+    border: none !important;
+    color:red;
+    background-color: none!important;
+    padding: 0!important;
+
+}
+.special{
+    width:60%;
+    margin: 0 auto;
+}
+
+.img-fluid{
+    max-height: 350px;
+}
+#comments{
+    margin-top: 30px;
+    background-color: rgb(219, 219, 219);
+    margin-bottom: 30px;
+
+}
+.avatar{
+    width: 50px;
+    height: auto;
+    max-height: 60px;
+    margin-right: 0;
+    border:none;
+}
+.col-md-10{
+    padding-left: 0;
+}
+h5{
+    display: inline;
+}
+#add{
+    color:white;
+}
+h1{
+    font-weight: 700;
+    font-family: 'Big Shoulders Display', cursive;
+
+}
+textarea {
+	min-height: 5em;
+    width: 100%;
+    height: auto;
+}
+.fa-facebook{
+    font-size: 2em;
+    color:#3b5998;
+}
+.fa-instagram{
+    color :#E1306C;
+    font-size: 2em;
+    margin:0 10px;
+}
+.fa-tumblr-square{
+    font-size: 2em;
+    color: #34526F;
+}
+.jumbotron{
+    background-image:url(https://i.imgur.com/1PeQdB4.jpg);
+    color:white;
+    margin:0;
+    margin-top: 0!important;
+    border-radius: 0;
+}
+.index{
+    background-image: url(https://i.pinimg.com/originals/b1/5d/1b/b15d1b822a2654448b7dfc04962bd096.png);
+}
+.profile{
+    border-radius: 10px;
+    max-height: 250px;
+}
+.edit{
+    word-wrap: none;
+    color:#4d4d4d;
+}
+h3{
+    font-weight: 700;
+}
+div.cardShow{
+    background-color:rgb(52, 58, 64);
+    color:white;
+    background:transparent\1;
+    border-radius: 10px;
+    -webkit-box-shadow: 2px 7px 12px 0px rgba(0,0,0,0.39);
+    -moz-box-shadow: 2px 7px 12px 0px rgba(0,0,0,0.39);
+    box-shadow: 2px 7px 12px 0px rgba(0,0,0,0.39);
+}
+.alert{
+    margin-bottom: 0;
+}

@@ -1,0 +1,40 @@
+<% include ../partials/header %>
+<div class="jumbotron index">
+    <div class="container">
+        <h1>Hello world!</h1>
+        <p>A blog where you can find everything about IT.</p>
+        <p>
+            <a href="/blogs/new" class="btn btn-primary">Add new post!</a>
+        </p>
+        <p>
+            <form action="/" method="get" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Search a theme..." class="form-control">
+                    <input type="submit" value="Search" class="btn btn-primary">
+                </div>
+            </form>
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <%blogs.forEach(function(blog){%>
+        <div class="card cardShow mt-4 mb-4">
+            <div class="card-body">
+                <h5 class="card-title"><%=blog.title%></h5>
+                <div class="row">
+                    <div class ="col-md-2 col-sm-6">
+                        <img src="<%=blog.image%>" class="img-thumbnail">
+                    </div>
+                    <div class="col-sm-6 col-md=9">
+                        <p><%=blog.body.substring(0,100)%>...</p>
+                        <a href="/blogs/<%=blog._id%>" class="btn  btn-primary">Read more</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    <%})%>
+</div>
+
+<% include ../partials/footer %>
